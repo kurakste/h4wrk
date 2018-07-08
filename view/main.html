@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <link href="/css/main.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class='overlay-container invisible'>
+       <div class="overlay">
+            <img class="icon" id='close' src="./close-icon.png" alt="">
+            <img class="mainView" src="./img/pic4.jpg" alt="" />
+       </div>
+    </div>
+<div class="wrapper">
+    <div class="mainCont" >
+        <div class="photoCont" id='cont'>
+           <h2>Hi! {{countOfPages}}</h2>
+           {% for pic in goods %}
+            <div>
+               <div class='inner'>
+                  <img src="/img/{{ pic.fname }}" 
+                  id="{{ pic.id }}" alt='' border='0'
+                  style = 'width: 200px; height: 124px;'/>
+                  <div class='badge'><p>0</p></div>
+                  <h4> {{ pic.name }} </h4>
+                  <p> {{ pic.description }} </p>
+               </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div> <!-- mainCont -->
+    <div class="clearfix"></div>
+    <div class="pages">
+       Страницы:
+       {% for i in range(1, countOfPages, 1) %}
+       <a 
+       {% if i in [pageNum] %} class = "markered_page" {% endif %}
+       href="/catalog/{{ i }}" 
+       title="{{ i }}" type="" 
+      >{{ i }} </a>
+       {% endfor %}
+    </div>
+</div> <!-- wrapper  -->
+<script src="js/main.js"></script>
+
+</html>
